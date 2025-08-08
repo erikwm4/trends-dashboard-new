@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watson's Google Trends Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <base href="/trends-dashboard-new/">
+    <link rel="stylesheet" href="googledashv3.css">
+    <script src="https://ssl.gstatic.com/trends_nrtr/3826_RC01/embed_loader.js"></script>
+</head>
+<body>
+    <div class="dashboard-wrapper">
+        <aside class="sidebar">
+            <h1 class="logo">Trends Dashboard</h1>
+            <div class="tabs-container">
+                <button class="tab-button active" data-city="Cincinnati">
+                    <i class="fas fa-city"></i> Cincinnati
+                </button>
+                <button class="tab-button" data-city="StLouis">
+                    <i class="fas fa-archway"></i> St. Louis
+                </button>
+                <button class="tab-button" data-city="Detroit">
+                    <i class="fas fa-car-side"></i> Detroit
+                </button>
+            </div>
+            <button id="add-widget-button" class="sidebar-action-button"><i class="fas fa-plus"></i> Add Widget</button>
+            <button id="add-city-button" class="sidebar-action-button add-city-button"><i class="fas fa-plus"></i> Add City</button>
+        </aside>
+
+        <main class="main-content">
+            <header class="main-header">
+                <div class="header-left">
+                    <h2 id="city-title">Cincinnati Dashboard</h2>
+                    <div class="date-range-container">
+                        <i class="fas fa-calendar-alt"></i>
+                        <input type="text" id="global-date-range" class="flatpickr-input" placeholder="Select Date Range">
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button id="save-dashboard-button" class="header-action-button"><i class="fas fa-save"></i> Save</button>
+                    <button id="load-dashboard-button" class="header-action-button"><i class="fas fa-upload"></i> Load</button>
+                    <input type="file" id="load-file-input" accept=".json" style="display: none;">
+                </div>
+            </header>
+
+            <div id="add-widget-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close-button">&times;</span>
+                    <h3>Add New Trends Widget</h3>
+                    <div class="form-group">
+                        <label for="modal-keyword">Keyword</label>
+                        <input type="text" id="modal-keyword" placeholder="e.g., Bengals, Skyline Chili">
+                    </div>
+                    <div class="form-group">
+                        <label for="modal-geo">State</label>
+                        <select id="modal-geo"></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="modal-chart-type">Chart Type</label>
+                        <select id="modal-chart-type">
+                            <option value="Interest over time">Interest over time (Sparkline)</option>
+                            <option value="Regional interest">Regional interest (Map)</option>
+                        </select>
+                    </div>
+                    <input type="hidden" id="modal-date">
+                    <button id="modal-add-button" class="cta-button"><i class="fas fa-plus"></i> Add Widget</button>
+                </div>
+            </div>
+            
+            <div id="add-city-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close-button">&times;</span>
+                    <h3>Add New City Dashboard</h3>
+                    <div class="form-group">
+                        <label for="new-city-name">City Name</label>
+                        <input type="text" id="new-city-name" placeholder="e.g., Dallas">
+                    </div>
+                    <button id="new-city-add-button" class="cta-button"><i class="fas fa-plus"></i> Add City</button>
+                </div>
+            </div>
+
+            <div class="widget-grid-container">
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.js"></script>
+    <script src="googledashv3.js"></script>
+</body>
+</html>
