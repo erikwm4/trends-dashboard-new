@@ -1,0 +1,368 @@
+:root {
+    --bg-color: #f0f2f5;
+    --surface-color: rgba(255, 255, 255, 0.6);
+    --primary-color: #007aff;
+    --text-color: #1c1c1e;
+    --muted-text-color: #6a6a6a;
+    --border-color: rgba(0, 0, 0, 0.1);
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --border-radius: 12px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    line-height: 1.6;
+    display: flex;
+    min-height: 100vh;
+}
+
+.dashboard-wrapper {
+    display: flex;
+    width: 100%;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 0 20px var(--shadow-color);
+    border-right: 1px solid var(--border-color);
+}
+
+.logo {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-lg);
+    font-weight: 600;
+}
+
+.tabs-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.tab-button {
+    background-color: transparent;
+    border: none;
+    color: var(--muted-text-color);
+    text-align: left;
+    padding: 12px var(--spacing-md);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.tab-button:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.tab-button.active {
+    background-color: var(--primary-color);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 122, 255, 0.2);
+    font-weight: 500;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: var(--spacing-lg);
+}
+
+.main-header h2 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 400;
+}
+
+.header-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.header-action-button {
+    background-color: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: var(--text-color);
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.header-action-button:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
+}
+
+.sidebar-action-button {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(0, 122, 255, 0.2);
+}
+
+.sidebar-action-button:hover {
+    background-color: #0056b3;
+    box-shadow: 0 6px 16px rgba(0, 122, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.widget-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+    flex-grow: 1;
+    align-content: flex-start;
+}
+
+.widget-card {
+    background-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(5px);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-md);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    height: 400px; /* Adjusted from `height: auto;` to allow for scrollable content, as the iframe will fill the space */
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+.widget-card:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.widget-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.widget-card-title {
+    font-size: 1.2rem;
+    margin: 0;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.remove-widget-button {
+    background: none;
+    border: none;
+    color: #ff3b30;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+.remove-widget-button:hover {
+    color: #c82333;
+}
+
+.trends-embed {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+}
+
+.trends-embed iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(2px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(15px);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius);
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.close-button {
+    color: var(--muted-text-color);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.modal-content h3 {
+    margin-top: 0;
+    margin-bottom: var(--spacing-md);
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.form-group {
+    margin-bottom: var(--spacing-md);
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 400;
+    color: var(--muted-text-color);
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    background-color: rgba(255, 255, 255, 0.7);
+    color: var(--text-color);
+    border-radius: 8px;
+    box-sizing: border-box;
+    transition: all 0.2s ease-in-out;
+}
+
+.form-group input:focus, .form-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(0, 122, 255, 0.2);
+}
+
+.cta-button {
+    display: inline-block;
+    width: 100%;
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 12px;
+    text-align: center;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: var(--spacing-md);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #0056b3;
+    box-shadow: 0 4px 12px rgba(0, 122, 255, 0.3);
+}
+
+.flatpickr-calendar {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 15px var(--shadow-color);
+    border-radius: 8px;
+}
+
+.flatpickr-day.selected, .flatpickr-day.startRange, .flatpickr-day.endRange, .flatpickr-day.selected.inRange, .flatpickr-day.startRange.inRange, .flatpickr-day.endRange.inRange {
+    background: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+    color: #fff !important;
+}
+
+.flatpickr-day.inRange {
+    background-color: rgba(0, 122, 255, 0.2);
+    border-color: transparent;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.date-range-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+#global-date-range {
+    width: 250px;
+    padding: 8px 12px 8px 35px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(5px);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: var(--text-color);
+    transition: all 0.2s ease-in-out;
+}
+
+#global-date-range:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+#global-date-range:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(0, 122, 255, 0.2);
+}
+
+.date-range-container .fa-calendar-alt {
+    position: absolute;
+    left: 12px;
+    color: var(--muted-text-color);
+}
